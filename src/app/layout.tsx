@@ -8,6 +8,7 @@ import { SiteHeader } from '@/components/site-header'
 import { Toaster } from '@/components/ui/toaster'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { siteConfig } from '@/config/site'
+import { getData, notion } from '@/lib/notion'
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -60,7 +61,8 @@ interface RootLayoutProps {
   children: React.ReactNode
   modal: React.ReactNode
 }
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const [BaseInfo, data] = await getData();
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -78,7 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
+              <SiteHeader/>
               <div className="flex-1">{children}</div>
             </div>
             <TailwindIndicator />
