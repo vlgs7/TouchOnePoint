@@ -37,8 +37,8 @@ export default function IndexPage() {
           customize. All about you.
         </PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
-          <Link href="/docs" className={cn(buttonVariants())}>
-            Get Started
+          <Link href="/example" className={cn(buttonVariants())}>
+            Example
           </Link>
           <Link
             target="_blank"
