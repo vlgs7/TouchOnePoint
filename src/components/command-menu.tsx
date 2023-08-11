@@ -1,9 +1,9 @@
 'use client'
-
+import { NavItem } from '@/types/nav'
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { DialogProps } from '@radix-ui/react-alert-dialog'
-import { LaptopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import { FileIcon, LaptopIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -16,10 +16,16 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command'
+import { getData } from '@/lib/notion'
+import getItems from '@/actions/getItems'
 
-export function CommandMenu({ ...props }: DialogProps) {
+export function CommandMenu({ ...props }: DialogProps | any) {
+  console.log('props.data',props);
   const [open, setOpen] = React.useState(false)
   const { setTheme } = useTheme()
+
+  // console.log('CommandMenu数据', mainNavs)
+  const router = useRouter();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -37,6 +43,7 @@ export function CommandMenu({ ...props }: DialogProps) {
     setOpen(false)
     command()
   }, [])
+
 
   return (
     <>
@@ -58,6 +65,24 @@ export function CommandMenu({ ...props }: DialogProps) {
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Links">
+            {
+              props.data && (props.data as NavItem[])
+              .filter((navitem) => !navitem.external)
+              .map((navItem) => (
+                <CommandItem
+                  key={navItem.href}
+                  value={navItem.title}
+                  onSelect={() => {
+                    runCommand(() => router.push(navItem.href as string))
+                  }}
+                >
+                  <FileIcon className="mr-2 h-4 w-4" />
+                  {navItem.title}
+                </CommandItem>
+              ))
+            }
+          </CommandGroup>
           <CommandGroup heading="Theme">
             <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
               <SunIcon className="mr-2 h-4 w-4" />

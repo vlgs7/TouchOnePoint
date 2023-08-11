@@ -26,6 +26,7 @@ async function page() {
       },
     }),
   ])
+  // console.log('数据结果',data.results)
 
   return (
     <>
