@@ -16,7 +16,6 @@ interface MainCardProps {
 function Maincard({ item, IconsType }: MainCardProps) {
   const pathname = usePathname()
   const [mounted, setMounted] = React.useState(false)
-  console.log(pathname)
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -60,8 +59,9 @@ function Maincard({ item, IconsType }: MainCardProps) {
           </CardContent>
           <CardFooter>
             <Button variant="link" className="mb-auto mr-0">
-              <div className="h-4 flex items-center justify-between gap-1 text-base">
-                {IconsType}
+              <div className="h-5 flex items-center justify-between gap-1 text-base">
+                <div className="h-4 w-auto"> {IconsType}</div>
+
                 <div className="whitespace-nowrap">
                   @ {item.properties?.Author.title[0].plain_text}
                 </div>

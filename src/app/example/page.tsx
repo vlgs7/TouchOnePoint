@@ -9,7 +9,7 @@ import { Icons } from '@/components/icons'
 import Maincard from '@/components/main-card'
 import Link from 'next/link'
 
-export const revalidate = 3600
+export const revalidate = 60
 
 async function page() {
   const [BaseInfo, data] = await Promise.all([

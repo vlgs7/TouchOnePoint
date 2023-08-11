@@ -6,6 +6,9 @@ import { Thumbnail, notion } from '@/lib/notion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+
+export const revalidate = 60
+
 export default async function PhotoModal({
   params: { id: blockId },
 }: {
@@ -27,7 +30,6 @@ export default async function PhotoModal({
   ])
   const item = data.results.find((item: any) => item.id === blockId)
   const IconsType = getIcon(item.properties.Tags.select.name)
-  console.log(IconsType)
   return (
     <Modal>
       <Card className="container" key={item.id}>
