@@ -48,21 +48,20 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: '@shadcn',
+    creator: '@vlgs7',
   },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
 }
 interface RootLayoutProps {
   children: React.ReactNode
   modal: React.ReactNode
 }
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const [BaseInfo, data] = await getData();
+  const [BaseInfo, data] = await getData()
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -80,7 +79,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader/>
+              <SiteHeader />
               <div className="flex-1">{children}</div>
             </div>
             <TailwindIndicator />

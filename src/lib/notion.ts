@@ -14,6 +14,8 @@ export function PageIcon(body: any): string {
   return (body && body[body?.type]?.url) ?? ''
 }
 
+export const revalidate = 60
+
 export async function getData(): Promise<any> {
   const [BaseInfo, data] = await Promise.all([
     notion.databases.retrieve({

@@ -48,8 +48,7 @@ function Maincard({ item, IconsType }: MainCardProps) {
               className={cn(
                 'mt-6 border-l-2 pl-6 pr-2 italic  text-sm md:text-base',
                 {
-                  'max-h-24 md:h-16 overflow-y-hidden':
-                    pathname.replace(/^\//, '').split('/').length == 1,
+                  'max-h-24 md:h-16 overflow-y-hidden': true,
                 }
               )}
             >

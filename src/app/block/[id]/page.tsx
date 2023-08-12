@@ -1,8 +1,13 @@
 import { Icons } from '@/components/icons'
 import Maincard from '@/components/main-card'
-import Modal from '@/components/modals'
-import { getData, notion } from '@/lib/notion'
+import { getData } from '@/lib/notion'
 
+export async function generateStaticParams() {
+  const [, data] = await getData()
+  return data.results.map((item: any) => ({
+    slug: item.id,
+  }))
+}
 export default async function PhotoModal({
   params: { id: blockId },
 }: {

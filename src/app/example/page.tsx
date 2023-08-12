@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
-import { PageIcon, Thumbnail, notion } from '@/lib/notion'
+import { PageIcon, Thumbnail, getData, notion } from '@/lib/notion'
 import Balancer from 'react-wrap-balancer'
 
 import { Separator } from '@/components/ui/separator'
@@ -9,24 +9,8 @@ import { Icons } from '@/components/icons'
 import Maincard from '@/components/main-card'
 import Link from 'next/link'
 
-export const revalidate = 60
-
 async function page() {
-  const [BaseInfo, data] = await Promise.all([
-    notion.databases.retrieve({
-      database_id: process.env.DATABASE_ID,
-    }),
-    notion.databases.query({
-      database_id: process.env.DATABASE_ID,
-      filter: {
-        property: 'Public',
-        checkbox: {
-          equals: true,
-        },
-      },
-    }),
-  ])
-  // console.log('数据结果',data.results)
+  const [BaseInfo, data] = await getData()
 
   return (
     <>

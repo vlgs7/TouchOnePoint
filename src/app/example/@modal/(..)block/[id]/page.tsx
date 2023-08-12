@@ -2,32 +2,25 @@ import { Icons, getIcon } from '@/components/icons'
 import Maincard from '@/components/main-card'
 import Modal from '@/components/modals'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { Thumbnail, notion } from '@/lib/notion'
+import { Thumbnail, getData, notion } from '@/lib/notion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
 export const revalidate = 60
 
+export async function generateStaticParams() {
+  const [, data] = await getData()
+  return data.results.map((item: any) => ({
+    slug: item.id,
+  }))
+}
 export default async function PhotoModal({
   params: { id: blockId },
 }: {
   params: { id: string }
 }) {
-  const [BaseInfo, data] = await Promise.all([
-    notion.databases.retrieve({
-      database_id: process.env.DATABASE_ID,
-    }),
-    notion.databases.query({
-      database_id: process.env.DATABASE_ID,
-      filter: {
-        property: 'Public',
-        checkbox: {
-          equals: true,
-        },
-      },
-    }),
-  ])
+  const [, data] = await getData()
   const item = data.results.find((item: any) => item.id === blockId)
   const IconsType = getIcon(item.properties.Tags.select.name)
   return (
