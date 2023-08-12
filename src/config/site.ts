@@ -7,6 +7,7 @@ export const siteConfig = {
   links: {
     github: 'https://github.com/vlgs7/touchonepoint',
   },
+  timeZone: 'Asia/Shanghai',
 }
 
 export type SiteConfig = typeof siteConfig

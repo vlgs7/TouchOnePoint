@@ -3,7 +3,6 @@ import React from 'react'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import Image from 'next/image'
 import { Thumbnail } from '@/lib/notion'
 import { Skeleton } from './ui/skeleton'
@@ -14,7 +13,6 @@ interface MainCardProps {
   IconsType: React.ReactNode
 }
 function Maincard({ item, IconsType }: MainCardProps) {
-  const pathname = usePathname()
   const [mounted, setMounted] = React.useState(false)
   React.useEffect(() => {
     setMounted(true)

@@ -33,20 +33,14 @@ export default function Modal({ children }: { children: React.ReactNode }) {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [onKeyDown])
   useEffect(() => {
-    const preventScroll = (event: WheelEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
-        event.preventDefault()
+    const body = document.querySelector('body')
+    if (body) {
+      const prevOverflow = body.style.overflow
+      body.style.overflow = 'hidden'
+
+      return () => {
+        body.style.overflow = prevOverflow
       }
-    }
-
-    const modalRef = React.createRef<HTMLDivElement>()
-    document.addEventListener('wheel', preventScroll, { passive: false })
-
-    return () => {
-      document.removeEventListener('wheel', preventScroll)
     }
   }, [])
   return (
