@@ -6,7 +6,11 @@ import { Thumbnail, getData, notion } from '@/lib/notion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-
+import {
+  DatabaseObjectResponse,
+  QueryDatabaseResponse,
+} from '@notionhq/client/build/src/api-endpoints'
+type ResultType = QueryDatabaseResponse['results'][number]
 export const revalidate = 60
 
 export async function generateStaticParams() {
@@ -21,14 +25,16 @@ export default async function PhotoModal({
   params: { id: string }
 }) {
   const [, data] = await getData()
-  const item = data.results.find((item: any) => item.id === blockId)
-  const IconsType = getIcon(item.properties.Tags.select.name)
+  const item = data.results.find(
+    (item: ResultType) => item.id == blockId
+  ) as DatabaseObjectResponse
+  const IconsType = Icons[(item?.properties as any).Tags.select.name]
   return (
     <Modal>
       <Card className="container" key={item.id}>
         <CardContent className="pt-6 pb-2">
           <Image
-            src={Thumbnail(item.properties?.Thumbnail.files[0])}
+            src={Thumbnail((item?.properties as any).Thumbnail.files[0])}
             alt={'Thumbnail'}
             width={200}
             height={200}
@@ -36,8 +42,8 @@ export default async function PhotoModal({
             className="rounded-md aspect-square md:aspect-video object-cover transition-all hover:scale-105"
           />
           <blockquote className="mt-6 border-l-2 pl-6 pr-2 italic max-h-24 md:h-16 overflow-y-hidden text-sm md:text-base ">
-            {item.properties?.Bio.rich_text[0] &&
-              item.properties?.Bio.rich_text[0].plain_text}
+            {(item?.properties as any).Bio.rich_text[0] &&
+              (item?.properties as any).Bio.rich_text[0].plain_text}
           </blockquote>
         </CardContent>
         <CardFooter>
@@ -45,7 +51,7 @@ export default async function PhotoModal({
             <div className="h-4 flex items-center justify-between gap-1 text-base">
               <IconsType className="h-4 w-auto" />
               <div className="whitespace-nowrap">
-                @ {item.properties?.Author.title[0].plain_text}
+                @ {(item?.properties as any).Author.title[0].plain_text}
               </div>
             </div>
           </Button>
