@@ -1,3 +1,7 @@
+import { SiteFooter } from '@/components/site-footer'
+
+export const revalidate = 60
+
 export default function Layout(props: {
   children: React.ReactNode
   modal: React.ReactNode
@@ -6,6 +10,7 @@ export default function Layout(props: {
     <>
       {props.children}
       {props.modal}
+      <SiteFooter />
     </>
   )
 }

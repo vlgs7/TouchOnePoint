@@ -11,6 +11,7 @@ import {
   QueryDatabaseResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 type ResultType = QueryDatabaseResponse['results'][number]
+
 export const revalidate = 60
 
 export async function generateStaticParams() {

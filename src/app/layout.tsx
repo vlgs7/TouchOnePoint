@@ -10,6 +10,9 @@ import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { siteConfig } from '@/config/site'
 import { getData, notion } from '@/lib/notion'
 import { SiteFooter } from '@/components/site-footer'
+
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -82,7 +85,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <div className="flex-1">{children}</div>
-              <SiteFooter />
             </div>
             <TailwindIndicator />
           </ThemeProvider>
