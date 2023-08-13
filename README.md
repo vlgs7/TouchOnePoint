@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 TouchOnePoint: Connect Your Digital World
 
-## Getting Started
+Welcome to **TouchOnePoint**, your gateway to personal connections. This platform allows you to consolidate your personal links, profiles, and entire digital presence into a cohesive and user-friendly platform. 
+![Screenshot of Features](https://raw.githubusercontent.com/vlgs7/TouchOnePoint/main/public/og.png)
+![LightHouse](https://raw.githubusercontent.com/vlgs7/TouchOnePoint/main/public/lighthouse.png)
+## Features
 
-First, run the development server:
+- **Simple to Use**: Anyone can get started easily.
+- **Flexible Customization**: Tailor your presence as you like.
+- **Next.js App Router Integration**: Efficient routing mechanism.
+- **Responsive Components (RSC)**: Seamless user experience across devices.
+- **Tailwind with ShadeCN (shadcn)**: Elegant UI design.
+- **Optimized Rendering Performance**: Ensures a smooth user experience.
+- **SEO and OG Image Optimization**: Enhances online visibility on social media.
+- **Lighthouse Full Green**: Demonstrates the best practices in performance, accessibility, and more.
+- **Notion as CMS for Quick Editing**: Effortlessly edit and manage content.
+- **Vercel for Quick Deployment**: Ensures quick and reliable deployment.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Get Started
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Follow the instructions below to get started:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Fork the repository.
+2. You need have a Notion account and Create an [integration](https://developers.notion.com/docs/create-a-notion-integration)
+3. Duplicate the Noiton [template](https://vlgs.notion.site/b62bcb5f40fb4c968a2417891ea013ae?v=c984372c7722441c9433b774746460df&pvs=4).
+4. Share the database with your integration
+5. **Clone the Repository**: Use `git clone` to copy the project to your local machine.
+6. **Customize Routes and Other Settings**: Modify the route paths and other customizable parts as per your needs.
+5. **Deploy to Vercel**: Push your changes and deploy the project to Vercel.
+6. **Set Up Environment Variables**: On the Vercel dashboard, refer to the `.env.example` file and fill in your environment variables accordingly.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    ```bash
+    NOTION_API_KEY=secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    DATABASE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```
 
-## Learn More
+## Contribute
 
-To learn more about Next.js, take a look at the following resources:
+Feel free to contribute to TouchOnePoint and help make personal digital connections even more accessible.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT License](https://github.com/vlgs7/TouchOnePoint/blob/main/LICENSE)
